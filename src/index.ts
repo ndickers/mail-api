@@ -2,8 +2,11 @@ import "dotenv/config";
 import { serve } from "@hono/node-server";
 import { Hono } from "hono";
 import nodemailer from "nodemailer";
+import { cors } from "hono/cors";
 import SMTPTransport from "nodemailer/lib/smtp-transport";
 const app = new Hono();
+app.use(cors());
+
 type mail = {
   subject: string;
   content: string;
